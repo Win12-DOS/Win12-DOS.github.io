@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>遥遥领先于同行 - 首页</title>
+    <title>SYSTEM-WIN-DOS - 首页</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="favicon.ico">
 </head>
@@ -12,26 +12,29 @@
     <nav id="navbar">
         <div class="container">
             <div class="logo">
-                <span style="margin-right: 0;">遥遥领先于同行</span>
+                <span style="margin-right: 0;">SYSTEM-WIN-DOS</span>
             </div>
             <ul>
                 <li><a href="#home">首页</a></li>
                 <li><a href="#products">产品</a></li>
                 <li><a href="#about">关于Me</a></li>
+                <li><button id="theme-toggle" class="theme-btn" title="切换主题">🌙</button></li>
             </ul>
         </div>
     </nav>
 
     <!-- 主页Banner -->
     <header id="home" class="banner gradient">
+        <canvas id="particles-canvas"></canvas>
         <div class="container">
-            <img src="img/ProfilePicture/icon.png" alt="UP主头像" class="profile_img">
+            <img src="favicon.ico" alt="UP主头像" class="profile_img">
             <b>
-            <h1>遥遥领先于同行</h1>
+            <h1 id="typewriter-title">SYSTEM-WIN-DOS</h1>
             <p>B站科技区UP主</p>
             </b>
             <a href="#products" class="btn">产品展示</a>
             <a href="#about" class="btn">关于Me</a>
+            <div class="visitor-counter">👀 访问量: <span id="visitor-count">0</span></div>
         </div>
     </header>
 
@@ -73,7 +76,7 @@
         <div class="container">
             <h2><b>关于Me</b></h2>
             <div class="profile">
-                <img src="/img/ProfilePicture/icon.png" alt="profile picture" class="profile_img">
+                <img src="favicon.ico" alt="profile picture" class="profile_img">
                 <div class="bio">
                     <b>
                     <p>B站科技区UP主</p>

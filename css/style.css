@@ -862,3 +862,138 @@ footer ul li a:hover::after {
     }
 }
 
+
+/* 主题切换按钮 */
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+.theme-btn:hover {
+    transform: scale(1.2);
+    background: rgba(0, 161, 214, 0.2);
+}
+
+/* 暗色模式覆盖 */
+[data-theme="dark"] {
+    --dark-color: #F0F8FF;
+    --light-color: #001220;
+}
+[data-theme="dark"] #navbar {
+    background: rgba(0, 18, 32, 0.8);
+}
+[data-theme="dark"] .logo,
+[data-theme="dark"] #navbar ul {
+    background: rgba(0, 18, 32, 0.8);
+    box-shadow: 0 2px 10px rgba(0, 161, 214, 0.3);
+}
+[data-theme="dark"] .project-card {
+    background: #0a1929;
+}
+[data-theme="dark"] footer .show .row {
+    border-color: rgba(240, 248, 255, 0.3);
+}
+[data-theme="dark"] footer ul li a::after {
+    background: linear-gradient(90deg, transparent, var(--blue-color), transparent);
+}
+
+
+/* 滚动动画 - 淡入效果 */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* 3D卡片效果 */
+.project-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+.project-card .card-3d-wrapper {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+}
+.project-card:hover .card-3d-wrapper {
+    transform: rotateX(5deg) rotateY(-5deg) translateZ(10px);
+}
+
+
+/* 粒子画布 */
+#particles-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+.banner .container {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* 打字机效果 */
+#typewriter-title {
+    overflow: hidden;
+    border-right: 3px solid var(--blue-color);
+    white-space: nowrap;
+    animation: typing 2s steps(15) 0.5s forwards, blink 0.75s step-end infinite;
+    width: 0;
+    display: inline-block;
+}
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+[data-theme="dark"] #typewriter-title {
+    border-color: var(--golden-color);
+}
+
+
+/* 访问量计数器 */
+.visitor-counter {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.75);
+    opacity: 0.9;
+}
+.visitor-counter span {
+    font-weight: bold;
+    color: var(--golden-color);
+    text-shadow: 0 0 10px var(--golden-color);
+}
+
