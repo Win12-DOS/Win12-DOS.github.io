@@ -3,83 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYSTEM-WIN-DOS - 产品展示</title>
+    <title>Win12-DOS - 产品展示</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="../favicon.ico">
 </head>
 <body>
 
     <!-- 导航栏 -->
-    <nav id="navbar">
-        <div class="container">
-            <div class="logo">
-                <span>SYSTEM-WIN-DOS</span>
-                <div class="path">
-                    <a href="/" class="link">首页</a>
-                </div>
-            </div>
-            <ul>
-                <li><a href="/">首页</a></li>
-                <li><a href="#about">关于Me</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div id="header"></div>
 
-    <!-- 产品展示 -->
-    <section id="products" class="section light-bg">
-        <div class="container">
-            <h2><b>产品展示</b></h2>
-            <div class="projects-grid">
-                <a href="system_install_shit/index.html" target="_blank" class="project-card">
-                    <img src="/img/Icon/system_install_shit.png" alt="产品图片">
-                    <div class="project-card-content">
-                        <h3>赤石汐统重装PE</h3>
-                        <p>超级无敌氨醛操作系统，预装常用软件，非常墙裂推荐，让电脑马上趋势</p>
-                    </div>
-                </a>
-                <a href="https://github.com/SYSTEM-WIN-DOS/Delete-Windows" target="_blank" class="project-card">
-                    <img src="/img/Icon/delete-windows.png" alt="产品图片">
-                    <div class="project-card-content">
-                        <h3>删除Windows</h3>
-                        <p>运行此脚本，您将获得一个趋势汐统</p>
-                    </div>
-                </a>
-                <a href="https://github.com/SYSTEM-WIN-DOS/ASCII_video_player" target="_blank" class="project-card">
-                    <img src="/img/Icon/ASCII_video_player.png" alt="产品图片">
-                    <div class="project-card-content">
-                        <h3>ASCII视频播放器</h3>
-                        <p>让你的视频变成字符，还能看出来原来的吗？</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 关于Me -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2><b>关于Me</b></h2>
-            <div class="profile">
-                <img src="favicon.ico" alt="profile picture" class="profile_img">
-                <div class="bio">
-                    <b>
-                    <p>B站科技区UP主</p>
-                    <p>简介：目前大部分时候私信必回，更新随缘，记得三连！[doge]</p>
-                    </b>
-                    <!-- 社交媒体链接 -->
-                    <div class="social-links">
-                        <a href="https://space.bilibili.com/2092212397" target="_blank" class="btn bilibili">哔哩哔哩空间</a>
-                        <a href="https://github.com/SYSTEM-WIN-DOS" target="_blank" class="btn github">GitHub个人主页</a>
+    <!-- 主体内容 -->
+    <div class="main-container">
+        <!-- 内容区 -->
+        <main class="content-area" id="products">
+            <section class="section light-bg" style="padding: 0;">
+                <div class="container">
+                    <h2><b>产品展示</b></h2>
+                    <div class="projects-grid">
+                        <a href="system_install_shit/index.html" target="_blank" class="project-card">
+                            <img src="/img/Icon/system_install_shit.png" alt="产品图片">
+                            <div class="project-card-content">
+                                <h3>赤石汐统重装PE</h3>
+                                <p>超级无敌氨醛操作系统，预装常用软件，非常墙裂推荐，让电脑马上趋势</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/Win12-DOS/Delete-Windows" target="_blank" class="project-card">
+                            <img src="/img/Icon/delete-windows.png" alt="产品图片">
+                            <div class="project-card-content">
+                                <h3>删除Windows</h3>
+                                <p>运行此脚本，您将获得一个趋势汐统</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/Win12-DOS/ASCII_video_player" target="_blank" class="project-card">
+                            <img src="/img/Icon/ASCII_video_player.png" alt="产品图片">
+                            <div class="project-card-content">
+                                <h3>ASCII视频播放器</h3>
+                                <p>让你的视频变成字符，还能看出来原来的吗？</p>
+                            </div>
+                        </a>
+                        <a href="fake_bsod/index.html" target="_blank" class="project-card">
+                            <img src="/img/Icon/fake_bsod.jpg" alt="产品图片">
+                            <div class="project-card-content">
+                                <h3>制作假蓝屏图片</h3>
+                                <p>一个可以制作假蓝屏图片的工具</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
+            </section>
+        </main>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <!-- 公告 -->
+            <div class="widget">
+                <h3 class="widget-title">网站公告</h3>
+                <div class="widget-content notice-widget">
+                    <p><strong>欢迎访问 Win12-DOS 个人网站！</strong></p>
+                    <p>本站主要分享个人原创产品和有趣的技术项目。</p>
+                    <p><strong style="color: #27ae60;">🔥 热门推荐：</strong></p>
+                    <a href="system_install_shit">赤石汐统重装PE</a>
+                    <a href="https://github.com/Win12-DOS/Delete-Windows">删除Windows</a>
+                    <a href="fake_bsod/index.html">制作假蓝屏图片</a>
+                </div>
             </div>
-        </div>
-    </section>
+
+            <!-- 热门产品 -->
+            <div class="widget">
+                <h3 class="widget-title">热门产品</h3>
+                <div class="widget-content">
+                    <ul class="hot-posts">
+                        <li><a href="system_install_shit"><span class="hot-num">1</span>赤石汐统重装PE</a></li>
+                        <li><a href="https://github.com/Win12-DOS/Delete-Windows"><span class="hot-num">2</span>删除Windows</a></li>
+                        <li><a href="https://github.com/Win12-DOS/ASCII_video_player"><span class="hot-num">3</span>ASCII视频播放器</a></li>
+                        <li><a href="fake_bsod/index.html"><span class="hot-num">4</span>制作假蓝屏图片</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 更新日志 -->
+            <div class="widget">
+                <h3 class="widget-title">更新日志</h3>
+                <div class="widget-content">
+                    <p><strong>2025.4.6</strong></p>
+                    <ul style="padding-left: 18px; font-size: 1.4rem; margin-bottom: 12px; color: var(--be-grey);">
+                        <li>兼容老版本 Chrome 内核（52+）</li>
+                        <li>修复 Sidebar 的问题（影响移动端无法点击，已修复）</li>
+                        <li>把 Sidebar 移到左边</li>
+                    </ul>
+                    <p><strong>2025.4.3</strong></p>
+                    <ul style="padding-left: 18px; font-size: 1.4rem; color: var(--be-grey);">
+                        <li>重构了界面，大幅增强用户观感</li>
+                        <li>加入"蓝屏制作"</li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+    </div>
 
     <!-- 页脚 -->
-    <footer id="footer"></footer>
+    <div id="footer"></div>
 
-    <script src="/js/script.js"></script>
     <script src="/js/footer.js"></script>
-</head>
+</body>
 </html>

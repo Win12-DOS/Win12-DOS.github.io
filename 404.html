@@ -1,12 +1,84 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 Not Found</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>404 Not Found - Win12-DOS</title>
     <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        :root {
+            --be-blue: #00aeec;
+            --be-white: #fff;
+            --be-body: #333;
+            --be-bg-grey-f8: #f8f8f8;
+            --be-bg-white: #ffffff;
+            --be-shadow: rgba(0, 0, 0, 0.1);
+            --header-height: 60px;
+            --content-max-width: 1200px;
+        }
+        @font-face {
+            font-family: 'JetBrainsMono';
+            src: url('font/JetBrains_Mono/JetBrainsMono-Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'JetBrainsMono';
+            src: url('font/JetBrains_Mono/JetBrainsMono-Medium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'JetBrainsMono';
+            src: url('font/JetBrains_Mono/JetBrainsMono-Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 62.5%; }
+        body {
+            font-family: 'JetBrainsMono', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+            font-size: 1.5rem; line-height: 1.8; color: var(--be-body);
+            background: var(--be-bg-grey-f8); min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; height: var(--header-height);
+            background: var(--be-bg-white); border-bottom: 1px solid #e5e5e5;
+            z-index: 1000;
+        }
+        .header-inner {
+            max-width: var(--content-max-width); margin: 0 auto; padding: 0 20px;
+            height: 100%; display: flex; align-items: center;
+        }
+        .logo { font-size: 2.2rem; font-weight: 700; color: var(--be-blue); text-decoration: none; }
+        .error-container {
+            text-align: center; padding: 40px 20px;
+        }
+        .error-container img {
+            width: 100%; max-width: 800px; height: auto; border-radius: 12px;
+            box-shadow: 0 4px 20px var(--be-shadow);
+        }
+        .back-btn {
+            display: inline-block; margin-top: 30px; padding: 12px 30px;
+            background: var(--be-blue); color: var(--be-white); border-radius: 25px;
+            font-weight: 600; text-decoration: none; transition: all 0.3s ease;
+        }
+        .back-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(0, 174, 236, 0.4); }
+    </style>
 </head>
 <body>
-    <img src="/img/404.gif" alt="404 Not Found" style="width: 100%; height: auto; object-fit: cover;">
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">💻 Win12-DOS</a>
+        </div>
+    </header>
+    <div class="error-container">
+        <img src="/img/404.gif" alt="404 Not Found">
+        <a href="/" class="back-btn">返回首页 →</a>
+    </div>
 </body>
 </html>
