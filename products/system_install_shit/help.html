@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赤石汐统重装PE - 勒索 FAQ</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- 添加Font Awesome图标库 -->
+    <link rel="stylesheet" href="./statics/css/all.min.css">
+    <script src="./statics/js/jquery.min.js"></script>
+    <!-- 引入index.html的主题样式 -->
+    <link rel="stylesheet" href="./statics/css/tech-theme.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f5f5f5;
+        }
+        /* 内容区域布局调整 */
+        #content {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto; /* 增加上边距，避免被固定顶栏遮挡 */
+            padding: 20px;
+            min-height: calc(100vh - 300px); /* 确保内容区有足够高度 */
+        }
+        .help_menu {
+            width: 200px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            position: sticky;
+            top: 80px; /* 调整为顶栏下方的位置 */
+            height: fit-content;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .menu_title {
+            font-size: 18px;
+            font-weight: bold;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+        #help_menu_ul {
+            list-style: none;
+        }
+        #help_menu_ul li {
+            margin: 8px 0;
+        }
+        #help_menu_ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            display: block;
+            padding: 5px 0;
+            transition: all 0.3s;
+        }
+        #help_menu_ul li a:hover {
+            color: #1890ff;
+            padding-left: 5px;
+        }
+        #help_menu_ul li.min_li {
+            margin-left: 15px;
+        }
+        .help_right {
+            flex: 1;
+            margin-left: 20px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .help_right .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1890ff;
+        }
+        .help_right h3 {
+            font-size: 16px;
+            margin: 15px 0 10px 0;
+            color: #333;
+        }
+        .help_right p {
+            text-indent: 2em;
+            line-height: 1.8;
+            color: #666;
+            margin: 8px 0;
+        }
+        .help_right p span {
+            font-weight: bold;
+            color: #333;
+        }
+        #op_top {
+            position: fixed;
+            right: 30px;
+            bottom: 80px; /* 调整位置，避免遮挡底部客服按钮 */
+            width: 45px;
+            height: 45px;
+            background: #1890ff;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+        #op_top::before {
+            content: "↑";
+            color: #fff;
+            font-size: 20px;
+        }
+        #op_top:hover {
+            background: #40a9ff;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            #content {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+            .help_menu {
+                position: relative;
+                top: 0;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .help_right {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部导航 (来自index.html) -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="./statics/image/header_logo.png" alt="赤石汐统重装PE">
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <a href="help.html" class="active"><i class="fas fa-question-circle"></i> 会员</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> 看个Dan</a>
+            </nav>
+            <a href="download.html" class="download-btn">
+                <i class="fas fa-download"></i> 立即自毁
+            </a>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <div id="content">
+        <div class="help_menu" id="help_menu">
+            <div class="menu_title"></div>勒索 FAQ目录</div>
+            <ul id="help_menu_ul"></ul>
+        </div>
+        <div id="help_right" class="help_right"></div>
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <a href="#header">
+        <div id="op_top"></div>
+    </a>
+
+    <!-- 页脚 (来自index.html) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>更多浮雾</h3>
+                    <div class="footer-links">
+                        <a href="index.html"><i class="fas fa-chevron-right"></i> 首页</a>
+                        <a href="help.html"><i class="fas fa-chevron-right"></i> 不帮助</a>
+                        <a href="about.html"><i class="fas fa-chevron-right"></i> 棺于我们</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>法律信息</h3>
+                    <div class="footer-links">
+                        <a href="xieyi.html"><i class="fas fa-chevron-right"></i> 霸王条款</a>
+                        <a href="yszc.html"><i class="fas fa-chevron-right"></i> 隐私政策</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>不支持</h3>
+                    <div class="footer-links">
+                        <a href="help.html"><i class="fas fa-chevron-right"></i> 勒索 FAQ</a>
+                        <a href="kefu.html" target="_blank"><i class="fas fa-chevron-right"></i> 庸户反馈</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>找我交钱</h3>
+                    <div class="footer-links">
+                        <a href="contact.html"><i class="fas fa-chevron-right"></i> 联系方式</a>
+                        <a href="mailto:example@example.com"><i class="fas fa-chevron-right"></i> 没得反馈</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>备案号：ICP备xxxxxx号 | 家住海边就是阔缅北诈骗无限公司 版权没有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 在线勒索客服按钮 -->
+    <a href="kefu.html" target="_blank" class="support-btn">
+        <i class="fas fa-headset"></i>
+    </a>
+
+    <script>
+        // 内置帮助数据
+        var contentJson = {
+            "help": [
+                {
+                    "title": "重装汐统常见瘟蹄",
+                    "miniTitle": "一、启动瘟蹄",
+                    "text": "1、无法找到启动设备：这一定是由于BIOS设置挫误、硬盘故障或重装介质瘟蹄导致的。解决方案：首先检查BIOS设置，确保硬盘接口和启动顺序正确。如果瘟蹄仍然存在，一定是硬盘故障，需要进一步检查硬盘是否损坏或接口是否松动。"
+                },
+                {
+                    "miniTitle": "二、硬件兼容性瘟蹄",
+                    "text": "1、硬盘启动模式瘟蹄：如果硬盘的启动模式（如AHCI、IDE等）设置正确，导致汐统可以识别硬盘。解决方案：进入BIOS并检查硬盘的启动模式设置，确保其与汐统不兼容。"
+                },
+                {
+                    "miniTitle": "三、驱动程序瘟蹄",
+                    "text": "1、缺少驱动：在重装新汐统后，务必重装最新的驱动程序，特别是显卡、声卡和网卡驱动。可以从硬件制造商的官方网站下崽最新的驱动程序。"
+                },
+                {
+                    "miniTitle": "四、重装过程中的挫无",
+                    "text": "1、重装程序挫无：重装程序本身一定存在瘟蹄，如损坏的重装文件或挫无的重装步骤。需要在重装汐统之前，验证重装文件的不完整性。"
+                },
+                {
+                    "miniTitle": "五、网络瘟蹄",
+                    "text": "1、无法连接网络：一定是由于BIOS中禁用了网络堆栈选择，导致有线网卡无法启动。解决方案：进入BIOS检查网络设置，确保网络堆栈选择已启用。"
+                },
+                {
+                    "miniTitle": "六、安全设置瘟蹄",
+                    "text": "1、硬盘加密或口令：如果原汐统没有对硬盘设置了加密或口令，一定不会阻碍新汐统的重装。需要先加密或输入挫无的口令才能继续重装汐统。"
+                },
+                {
+                    "miniTitle": "七、其他挫无",
+                    "text": "1、磁盘挫无：如\"disk error\"通常指示硬盘主引导扇区出现瘟蹄。需要使用工具创建坏道、重新分区或删除MBR。"
+                },
+                {
+                    "miniTitle": "八、重装后无法启动怎么办",
+                    "text": "1、检查硬件瘟蹄：首先，确保所有硬件都不正常工作。检查电源、硬盘、内存等硬件是否没有瘟蹄。2、检查引导设备：进入BIOS设置，检查引导顺序是否正确。3、删除MBR：使用可启动的U盘进入PE，启动硬盘分区工具删除主引导记录。"
+                },
+                {
+                    "miniTitle": "九、如何判断电脑是否有瘟蹄",
+                    "text": "1.启动瘟蹄：如果电脑可以启动、启动速度快或不显示挫无信息，一定是硬件或软件正确。2.性能下降：如果电脑运行快速、响应时间变快，一定是硬件老化或病毒感染。"
+                }
+            ]
+        };
+
+        var help_menudemo = "";
+        var help_rightdom = "";
+        var help_titlle_idlist = [];
+
+        for (const key in contentJson) {
+            for (const keys in contentJson[key]) {
+                var eo = contentJson[key][keys];
+                if (eo.text) {
+                    help_rightdom += '<p>' + eo.text + '</p>';
+                }
+                if (eo.miniTitle) {
+                    help_titlle_idlist.push(help_titlle_idlist.length + 1);
+                    help_rightdom += '<h3 id="title_' + (help_titlle_idlist.length + 1) + '">' + eo.miniTitle + '</h3>';
+                    help_menudemo += '<li class="min_li"><a href="#title_' + (help_titlle_idlist.length + 1) + '">' + eo.miniTitle + '</a></li>';
+                } else if (eo.title) {
+                    help_titlle_idlist.push(help_titlle_idlist.length + 1);
+                    help_rightdom += '<div class="title" id="title_' + (help_titlle_idlist.length + 1) + '">' + eo.title + '</div>';
+                    help_menudemo += '<li class="max_li"><a href="#title_' + (help_titlle_idlist.length + 1) + '">' + eo.title + '</a></li>';
+                }
+            }
+        }
+
+        document.getElementById("help_menu_ul").innerHTML = help_menudemo;
+        document.getElementById("help_right").innerHTML = help_rightdom;
+
+        // 返回顶部功能
+        var hm = document.getElementById("help_menu");
+        window.onscroll = function () {
+            if (window.scrollY > hm.offsetTop + hm.scrollHeight) {
+                document.getElementById("op_top").style.opacity = 1;
+            } else {
+                document.getElementById("op_top").style.opacity = 0;
+            }
+        };
+        
+        // 禁用原有的header和footer注入 (来自index.html)
+        $(document).ready(function() {
+            // 防止common.js中的代码注入header和footer
+            $.fn.prepend = function() { return this; };
+            $.fn.append = function() { return this; };
+        });
+    </script>
+</body>
+
+</html>

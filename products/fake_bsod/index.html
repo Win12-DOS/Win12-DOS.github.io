@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1260, initial-scale=1">
+  <title>Windows 蓝屏模拟</title>
+  <script src="./tailwindcss.js"></script>
+<!--  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script> -->
+  <script src="./html2canvas.min.js"></script>
+  <style>
+    body { margin: 0; padding: 0; }
+    .bsod-container { font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; }
+    input[type="file"] { display: none; }
+    .logo-preview { width: 64px; height: 64px; border-radius: 50%; border: 2px solid #22c55e; overflow: hidden; position: relative; }
+    .logo-preview img { width: 100%; height: 100%; object-fit: cover; }
+    .logo-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 20px; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .logo-remove { position: absolute; top: -4px; right: -4px; width: 20px; height: 20px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+    .qr-input { background: transparent; border: 1px solid white; border-top: transparent; color: white; padding: 10px 12px; font-size: 14px; width: 100%; border-radius: 7px; outline: none; transition: all 0.3s; }
+    .qr-input:focus { border: 2px solid white; border-top: transparent; }
+    .qr-input::placeholder { color: transparent; }
+    .qr-label { position: absolute; left: 0; top: -6px; font-size: 11px; color: white; transition: all 0.3s; pointer-events: none; }
+    .qr-input:focus ~ .qr-label, .qr-input:not(:placeholder-shown) ~ .qr-label { top: -6px; font-size: 11px; }
+    .download-btn { background: white; color: #374151; font-weight: bold; padding: 8px 16px; border-radius: 4px; border: none; cursor: pointer; display: inline-flex; align-items: center; transition: background 0.2s; }
+    .download-btn:hover { background: #e5e7eb; }
+    .download-btn svg { margin-right: 8px; }
+    [contenteditable]:focus { outline: none; }
+  </style>
+</head>
+<body>
+  <div class="flex justify-center">
+    <div id="bsod-wrapper" class="min-h-screen max-w-[1260px] w-[1260px] bsod-container" style="background-color: #0078D7;">
+      <div class="p-20 pb-52 text-white" id="capture-area" style="background-color: #0078D7;">
+        <div contenteditable="true" spellcheck="false">
+          <div class="text-[100px] mb-12">:(</div>
+          <div class="flex justify-between">
+            <div>
+              <div class="text-xl mb-12 max-w-3xl">
+                <p>你的设备遇到问题，需要重启</p>
+                <p class="mt-4">我们只收集某些错误信息，然后为你重新启动。</p>
+                <p class="mt-4">0% 完成</p>
+              </div>
+              <div class="flex items-start space-x-8">
+                <div class="bg-white p-2" id="qr-code-area">
+                  <div id="qrcode"></div>
+                </div>
+                <div class="text-l">
+                  <p>有关此问题的详细信息和可能的解决方法，请访问 https://www.windows.com/stopcode</p>
+                  <p class="mt-4">如果致电支持人员，请向他们提供以下信息：</p>
+                  <p>终止代码：CRITICAL_PROCESS_DIED</p>
+                </div>
+              </div>
+            </div>
+            <div id="logo" style="display: none;">
+              <img src="" alt="Windows Logo" width="300" height="300" id="bsod-logo">
+            </div>
+          </div>
+        </div>
+
+        <div id="controls">
+          <div class="mt-96 flex justify-center items-center">
+            <span class="mr-1 ml-2">Logo</span>
+            <div class="flex justify-center items-center">
+              <div class="relative w-16 h-16">
+                <input type="file" id="logo-upload" accept=".png, .jpg, .jpeg">
+                <div class="logo-preview" id="logo-preview-container">
+                  <img src="" alt="Logo" id="logo-preview">
+                  <div class="logo-overlay" id="logo-upload-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                      <circle cx="12" cy="13" r="3"></circle>
+                    </svg>
+                  </div>
+                </div>
+                <div class="logo-remove" id="logo-remove-btn" style="display: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 flex justify-center">
+            <div class="relative h-10 w-[400px] min-w-[50px]">
+              <input type="text" class="qr-input" id="qr-url" value="https://space.bilibili.com/2092212397" placeholder=" ">
+              <label class="qr-label">二维码 URL</label>
+            </div>
+          </div>
+
+          <div class="flex justify-center mt-4">
+            <button class="download-btn" id="download-full">
+              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"></path>
+              </svg>
+              <span>下载完整尺寸</span>
+            </button>
+            <button class="download-btn ml-2" id="download-square">
+              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"></path>
+              </svg>
+              <span>下载方形（无 Logo）</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./qrcode.min.js"></script>
+  <script>
+    (function() {
+      var logoUpload = document.getElementById('logo-upload');
+      var logoUploadBtn = document.getElementById('logo-upload-btn');
+      var logoRemoveBtn = document.getElementById('logo-remove-btn');
+      var logoPreview = document.getElementById('logo-preview');
+      var bsodLogo = document.getElementById('bsod-logo');
+      var qrUrl = document.getElementById('qr-url');
+      var qrcodeContainer = document.getElementById('qrcode');
+      var downloadFull = document.getElementById('download-full');
+      var downloadSquare = document.getElementById('download-square');
+      var currentLogo = '/windows_icon_logo.png';
+      var qrInstance = null;
+      var bgColor = '#0078D7';
+
+      function generateQR(url) {
+        qrcodeContainer.innerHTML = '';
+        if (!url) return;
+        qrInstance = new QRCode(qrcodeContainer, {
+          text: url,
+          width: 150,
+          height: 150,
+          colorDark: bgColor,
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      }
+
+      logoUploadBtn.addEventListener('click', function() {
+        logoUpload.click();
+      });
+
+      logoUpload.addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = function(ev) {
+            currentLogo = ev.target.result;
+            logoPreview.src = currentLogo;
+            bsodLogo.src = currentLogo;
+            logoRemoveBtn.style.display = 'flex';
+            document.getElementById('logo').style.display = '';
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      logoRemoveBtn.addEventListener('click', function() {
+        currentLogo = '/windows_icon_logo.png';
+        logoPreview.src = currentLogo;
+        bsodLogo.src = '';
+        logoRemoveBtn.style.display = 'none';
+        logoUpload.value = '';
+        document.getElementById('logo').style.display = 'none';
+      });
+
+      qrUrl.addEventListener('input', function() {
+        generateQR(qrUrl.value);
+      });
+
+      function downloadImage(isSquare) {
+        if (typeof html2canvas === 'undefined') {
+          alert('html2canvas 加载中，请稍后重试');
+          return;
+        }
+        var captureArea = document.getElementById('capture-area');
+        var controls = document.getElementById('controls');
+        controls.style.display = 'none';
+        if (isSquare) {
+          document.getElementById('logo').style.display = 'none';
+        }
+        html2canvas(captureArea, {
+          backgroundColor: bgColor,
+          scale: 2,
+          useCORS: true,
+          logging: false
+        }).then(function(canvas) {
+          controls.style.display = '';
+          if (isSquare) {
+            document.getElementById('logo').style.display = '';
+          }
+          var link = document.createElement('a');
+          link.download = 'Fake-BSOD.png';
+          link.href = canvas.toDataURL('image/png');
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }).catch(function(err) {
+          controls.style.display = '';
+          if (isSquare) {
+            document.getElementById('logo').style.display = '';
+          }
+          console.error('下载失败:', err);
+          alert('下载失败: ' + err.message);
+        });
+      }
+
+      downloadFull.addEventListener('click', function() {
+        downloadImage(false);
+      });
+
+      downloadSquare.addEventListener('click', function() {
+        downloadImage(true);
+      });
+
+      generateQR(qrUrl.value);
+    })();
+  </script>
+</body>
+</html>
